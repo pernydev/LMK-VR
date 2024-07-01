@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 const FROM = "HKI"
 const TO = "ROI"
-const DATE = "2025-03-01"
+const DATE = "2025-04-01"
 
 const resp = await fetch("https://www.vr.fi/api/v7", {
   "headers": {
