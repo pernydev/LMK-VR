@@ -21,7 +21,6 @@ const resp = await fetch("https://www.vr.fi/api/v7", {
     "x-bff-version": "2",
     "x-vr-requestid": "e52b46ce-7e8a-490c-8c9e-eb1fe5dc0cb1",
     "x-vr-sessionid": "66659d96-8ce6-42a6-9ac2-ffadfbb844dc",
-    "cookie": "loggedIn=false; loggedIn.sig=euNdCyAywiIFkWKemcYMz_pgND4; access_token=CbxkuYX9Vrf8gh7Tnj2vlaaLeR9X67yAV1QWwPmVAvB3nm5Ku/klPYTxsDCopMTsa5bjCJNbx+LB58xYWCJWoqxP5FVKCqkWjjop5AbIPmtSqajkOC/ZdMQwMNW6tUETOAyTq19Bvl5vCWEw17PuNUVViVxFba8SqOV0SZ+1MkUs5fjnJJJhqwjkxXsLIPeXRQZFYgFM3STASPxBWo6Brxo3U6iMyfeExoJqEpdpGmCCvO1+Nm+Sz3ffd6T44LqcVmRGFB/o/8sg5hX47/waXMiY/+d4sG4cdu1WHjrho5s3q2t/uP5Im+BxQf2WIJ637PT9ABdqso8NVqxPGCmSspgqBfPCItDAGDB/A567X5mwWMS19M/5yWjcPit5QCx6b1wHFCo99wrbDF8r294IkYvZnWM2jmC0DlJr1gb7dRFlLnP2shZOF/FXt/n0P9znjJp1M6MFc4ZOvcgIMETIQtcFnFngma+EyrFr6tNmb15kTBW8iGkyRiKXCsAw4BJujEsO1xBZk738eH+74O3rkbudGpp4bbS0F8GnxHXzrcHWrQTD3fd3yKf/0fc/EJ1XuhxZH9iSYKhKO2HR0+SSHLmk8sgFk7YIfcKh06clyOovY4Kuu44n9VtkbNCjiBuDebEHTaLnbxmZKwNBTataGE2b0OIEiQmiUGMuX4H8X1HF9kfkfPx7O9Ok5/bRko+VIMdvt5OZqAYn1fJA46lSihr7qDk1vpOlScVHQZEZFtwRKMo+IZbgtf1eoBeUUMkHUd4nhR0GzYdkRrxcYKTrm/0ygThsBFQ45LuJpxSVHCc1wX1TSa+zqx0fldzExfZS; access_token.sig=zxuS6kK-JrsuK_Vnc1WxJW8HAfg; access_token.iv=1e2ef9e902fe8ca3; refresh_token=OBUaQwPtLf6x6V2on26lqYCUJkzStw==; refresh_token.sig=3TVjLiOpDlYMt53y9nKRZtfXlJg; refresh_token.iv=ad7bf87075288412",
     "Referer": "https://www.vr.fi/",
     "Referrer-Policy": "origin"
   },
@@ -30,10 +29,10 @@ const resp = await fetch("https://www.vr.fi/api/v7", {
 });
 
 const text = await resp.text()
-if (text.includes("ExternalServiceError")) {
-    console.log("not yet!")
+if (text.includes('errors":[{"message')) {
+    console.log("not yet!", text)
 } else {
-    console.log("Avaliable!")
+    console.log("Avaliable!", text)
     const resp = await fetch(process.env.DISCORD_WEBHOOK_URL || "", 
         {
             method: "POST",
